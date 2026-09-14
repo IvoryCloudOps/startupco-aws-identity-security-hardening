@@ -1,0 +1,55 @@
+# ============================================================
+# Terraform
+# ============================================================
+
+# Terraform working directory
+.terraform/
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+
+# Terraform plan files
+*.tfplan
+tfplan
+plan.out
+
+# Local Terraform variables
+terraform.tfvars
+*.auto.tfvars
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+
+# ============================================================
+# Local secrets / credentials
+# ============================================================
+
+.env
+.env.*
+*.pem
+*.key
+credentials
+
+
+# ============================================================
+# Screenshots / evidence
+#
+# Screenshots will be added later after sensitive AWS
+# information has been redacted.
+# ============================================================
+
+docs/screenshots/
+screenshots/
+
+
+# ============================================================
+# Misc local files
+# ============================================================
+
+*.log
+.DS_Store
+Thumbs.db
