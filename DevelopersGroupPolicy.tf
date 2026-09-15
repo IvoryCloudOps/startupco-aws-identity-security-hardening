@@ -81,3 +81,5 @@ resource "aws_ssoadmin_account_assignment" "developers" {
   target_id   = data.aws_caller_identity.current.account_id
   target_type = "AWS_ACCOUNT"
 }
+
+data "aws_region" "current" {}
