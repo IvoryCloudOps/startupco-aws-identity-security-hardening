@@ -18,6 +18,18 @@ resource "aws_ssoadmin_permission_set_inline_policy" "analyst_policy" {
         Resource = aws_s3_bucket.application_data.arn
       },
       {
+        Sid      = "AllowS3ConsoleBucketList",
+        Effect   = "Allow",
+        Action   = "s3:ListAllMyBuckets",
+        Resource = "*"
+      },
+      {
+        Sid      = "AllowS3BucketLocation",
+        Effect   = "Allow",
+        Action   = "s3:GetBucketLocation",
+        Resource = aws_s3_bucket.application_data.arn
+      },
+      {
         Sid      = "AllowrdsDescribeDBInstances",
         Effect   = "Allow",
         Action   = "rds:DescribeDBInstances",

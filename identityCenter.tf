@@ -32,6 +32,11 @@ resource "aws_identitystore_user" "users" {
     given_name  = each.value.given_name
     family_name = each.value.family_name
   }
+
+  lifecycle {
+    ignore_changes = [emails]
+  }
+
 }
 
 

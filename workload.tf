@@ -117,6 +117,11 @@ resource "aws_instance" "test_instance" {
     Environment = "production"
     Role        = "app-server"
   }
+
+  lifecycle {
+    ignore_changes = [ami]
+  }
+
 }
 
 
