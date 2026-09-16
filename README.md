@@ -2,7 +2,7 @@
 
 **Status:** In progress — Identity & Access phase complete; Security Monitoring phase planned next
 
-**Environment status:** *Complete
+**Environment status:** Complete
 
 **Focus:** AWS • IAM Identity Center • Terraform • Least Privilege • Identity & Access Management • Cloud Security
 
