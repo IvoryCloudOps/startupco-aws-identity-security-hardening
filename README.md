@@ -17,7 +17,7 @@ Additional diagrams (administrative access flow, planned security-monitoring flo
 StartupCo launched a fitness-tracking application and has been operating in AWS for about three months. Because the original environment was stood up quickly, all 10 employees were sharing AWS root credentials — passed around in team chat — for routine day-to-day work. That meant no individual accountability, no least privilege, no audit trail tied to a person, and no MFA.
 
 | Team | Users | Required Access |
-|---|---|---|
+|---|---:|---|
 | Developers | 4 | EC2 management, S3 application-file access, CloudWatch Logs viewing |
 | Operations | 2 | Full EC2 and CloudWatch access, Systems Manager access, RDS management |
 | Finance | 1 | Cost Explorer, AWS Budgets, read-only resource visibility |
@@ -26,8 +26,6 @@ StartupCo launched a fitness-tracking application and has been operating in AWS 
 ---
 
 ## 🏗️ Architecture
-
-
 
 ![StartupCo AWS Identity & Security Hardening Architecture](Doc/Architecture/startupco-security-architecture.png)
 
@@ -41,26 +39,30 @@ AWS IAM Identity Center
                 |
                 v
      Permission sets assigned to the AWS workload account
-
+```
 
 ---
 
 ## 🧠 Key Decisions & Why
 
 ### Identity Architecture
+
 - **IAM Identity Center instead of 10 traditional IAM users.** Eliminates long-lived console credentials entirely and centralizes authentication and MFA at the identity-store level instead of per-user.
 - **Groups + permission sets instead of per-user policies.** Ten individual policies would drift out of sync over time; a group-membership change is a one-line Terraform diff instead of a new policy to write and review.
 
-### Least-Privilege Design, by group
+### Least-Privilege Design, by Group
+
 - **Developers — tag-scoped EC2, not account-wide.** Start/stop/reboot is restricted to instances tagged `Role = app-server`, so a developer credential can't reach infrastructure outside the app tier even where EC2 access is otherwise broad.
 - **Operations — full access is the correct call here.** Operations owns EC2/CloudWatch/RDS infrastructure by job function, so AWS-managed full-access policies match the actual business requirement instead of being over-provisioned.
 - **Finance — visibility without control.** Cost Explorer/Budgets plus read-only `Describe`/`List`/`Get` verbs only; validated that EC2 start, S3 upload, and Session Manager are all explicitly denied. Financial visibility and infrastructure administration are different jobs and shouldn't share a credential.
 - **Analysts — read-only, and a real IAM boundary.** S3 read access is straightforward; RDS is the interesting case. `rds:Describe*` at the IAM level is not the same thing as a SQL `SELECT` at the database level — IAM controls whether you can reach the database resource at all, not what you can query once connected. That boundary had to be documented explicitly, not assumed.
 
 ### EC2 Administration
+
 - **Systems Manager Session Manager, no SSH.** No key pair, no port 22, no inbound security-group rule for management at all. Operations gets a real interactive shell through Identity Center → Systems Manager → Session Manager instead.
 
-### Security Monitoring (planned)
+### Security Monitoring
+
 - **CloudTrail as the audit layer, GuardDuty as the detective layer, kept deliberately separate.** CloudTrail answers "who did what, when"; GuardDuty answers "is this activity suspicious." Config, Security Hub, EventBridge, and SNS then chain those into a single detect → alert → investigate → remediate flow, tested against one controlled, non-destructive misconfiguration.
 
 ---
