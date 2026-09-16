@@ -3,3 +3,18 @@ variable "application_bucket_name" {
   type        = string
 }
 
+variable "alert_email" {
+  type = string
+
+}
+
+
+variable "alert_phone" {
+  type      = string
+  sensitive = true
+}
+
+variable "startupco_database_secret" {
+  type      = string
+  sensitive = true
+}
