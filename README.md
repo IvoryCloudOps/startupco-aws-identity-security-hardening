@@ -27,11 +27,11 @@ StartupCo launched a fitness-tracking application and has been operating in AWS 
 
 ## 🏗️ Architecture
 
-```
+
 
 ![StartupCo AWS Identity & Security Hardening Architecture](Doc/Architecture/startupco-security-architecture.png)
 
-
+```text
 AWS IAM Identity Center
         |
         +-- Developers  (4 users) → DeveloperPermission
@@ -41,7 +41,7 @@ AWS IAM Identity Center
                 |
                 v
      Permission sets assigned to the AWS workload account
-```
+
 
 ---
 
