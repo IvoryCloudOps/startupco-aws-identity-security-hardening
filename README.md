@@ -8,7 +8,7 @@
 
 A hands-on cloud security portfolio project simulating an identity and security-hardening engagement for a fictional startup. StartupCo had been relying on shared AWS root credentials across all 10 employees; this project rebuilds workforce access around individual identities, group-based least privilege, and Terraform-managed security controls.
 
-Additional diagrams (administrative access flow, planned security-monitoring flow, planned detection-and-response flow) live in(architecture.md).
+Additional diagrams (administrative access flow, planned security-monitoring flow, planned detection-and-response flow) live in [`architecture.md`](architecture.md)
 
 ---
 
