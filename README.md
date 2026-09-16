@@ -1,7 +1,8 @@
 # 🔐 StartupCo AWS Identity & Security Hardening
 
 **Status:** In progress — Identity & Access phase complete; Security Monitoring phase planned next
-**Environment status:** *[fill in: is the Identity Center instance / test infrastructure still live, or torn down between validation sessions? Note it here the way the Regional Distribution project does.]*
+
+**Environment status:** *Complete
 
 **Focus:** AWS • IAM Identity Center • Terraform • Least Privilege • Identity & Access Management • Cloud Security
 
