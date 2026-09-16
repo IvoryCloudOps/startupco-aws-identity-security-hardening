@@ -29,7 +29,7 @@ StartupCo launched a fitness-tracking application and has been operating in AWS 
 
 ```
 
-![StartupCo AWS Identity & Security Hardening Architecture](Doc/Architecture/StartupCo%20AWS%20Identity%20%26%20Security%20Hardening.png)
+![StartupCo AWS Identity & Security Hardening Architecture](Doc/Architecture/startupco-security-architecture.png)
 
 
 AWS IAM Identity Center
