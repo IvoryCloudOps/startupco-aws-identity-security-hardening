@@ -1,14 +1,14 @@
 # 🔐 StartupCo AWS Identity & Security Hardening
 
-**Status:** In progress — Identity & Access phase complete; Security Monitoring phase planned next
+**Status:** Complete
 
-**Environment status:** Complete
+**Environment status:** Infrastructure Live
 
 **Focus:** AWS • IAM Identity Center • Terraform • Least Privilege • Identity & Access Management • Cloud Security
 
 A hands-on cloud security portfolio project simulating an identity and security-hardening engagement for a fictional startup. StartupCo had been relying on shared AWS root credentials across all 10 employees; this project rebuilds workforce access around individual identities, group-based least privilege, and Terraform-managed security controls.
 
-Additional diagrams (administrative access flow, planned security-monitoring flow, planned detection-and-response flow) live in [`docs/architecture.md`](docs/architecture.md).
+Additional diagrams (administrative access flow, planned security-monitoring flow, planned detection-and-response flow) live in(architecture.md).
 
 ---
 
